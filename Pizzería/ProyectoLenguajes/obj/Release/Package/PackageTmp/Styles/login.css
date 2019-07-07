@@ -1,0 +1,24 @@
+﻿
+
+.bg {
+width: 100%;
+height: auto;
+
+}
+
+.form-conatiner {
+    border: 0px solid #fff;
+    padding: 50px 60px;
+    margin-top: 5vh;
+    -webkit-box-shadow: 1px 4px 26px 11px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 4px 26px 11px rgba(0,0,0,0.75);
+    box-shadow: 1px 4px 26px 11px rgba(0,0,0,0.75);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.border1 {
+    border-style: groove;
+    background-color: blue;
+
+}
+

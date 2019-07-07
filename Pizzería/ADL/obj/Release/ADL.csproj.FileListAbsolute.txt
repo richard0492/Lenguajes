@@ -1,0 +1,14 @@
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\ADL.dll.config
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\ADL.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\ADL.pdb
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\Entities.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\EntityFramework.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\Entities.pdb
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\EntityFramework.xml
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\obj\Release\ADL.csprojAssemblyReference.cache
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\obj\Release\ADL.csproj.CoreCompileInputs.cache
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\obj\Release\ADL.csproj.CopyComplete
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\obj\Release\ADL.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\ADL\obj\Release\ADL.pdb

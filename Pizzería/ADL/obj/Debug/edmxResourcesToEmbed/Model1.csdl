@@ -1,0 +1,425 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDRestauranteProyectoLenguajesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EstadoOrden">
+    <Key>
+      <PropertyRef Name="EstadoId" />
+    </Key>
+    <Property Name="EstadoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_Orden_EstadoOrden" FromRole="EstadoOrden" ToRole="Orden" />
+  </EntityType>
+  <EntityType Name="LineaOrden">
+    <Key>
+      <PropertyRef Name="LineaOrdenID" />
+    </Key>
+    <Property Name="LineaOrdenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrdenID" Type="Int32" Nullable="false" />
+    <Property Name="PlatoID" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_LineaOrden_Orden" FromRole="LineaOrden" ToRole="Orden" />
+    <NavigationProperty Name="Plato" Relationship="Self.FK_LineaOrden_Plato" FromRole="LineaOrden" ToRole="Plato" />
+  </EntityType>
+  <EntityType Name="Orden">
+    <Key>
+      <PropertyRef Name="OrdenID" />
+    </Key>
+    <Property Name="OrdenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CorreoElectronicoCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="HoraInicio" Type="DateTime" Precision="3" />
+    <Property Name="EstadoID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EstadoOrden" Relationship="Self.FK_Orden_EstadoOrden" FromRole="Orden" ToRole="EstadoOrden" />
+    <NavigationProperty Name="LineaOrden" Relationship="Self.FK_LineaOrden_Orden" FromRole="Orden" ToRole="LineaOrden" />
+    <NavigationProperty Name="Party" Relationship="Self.FK_Orden_Party" FromRole="Orden" ToRole="Party" />
+  </EntityType>
+  <EntityType Name="Party">
+    <Key>
+      <PropertyRef Name="CorreoElectronico" />
+    </Key>
+    <Property Name="CorreoElectronico" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TipoParty" Type="Int32" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Habilitado_S_N_" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Orden" Relationship="Self.FK_Orden_Party" FromRole="Party" ToRole="Orden" />
+    <NavigationProperty Name="TipoParty1" Relationship="Self.FK_Party_TipoParty" FromRole="Party" ToRole="TipoParty" />
+  </EntityType>
+  <EntityType Name="Plato">
+    <Key>
+      <PropertyRef Name="PlatoID" />
+    </Key>
+    <Property Name="PlatoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Fotografia" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="HabilitadoSN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TiempoPreparacionMinutos" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="LineaOrden" Relationship="Self.FK_LineaOrden_Plato" FromRole="Plato" ToRole="LineaOrden" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TipoParty">
+    <Key>
+      <PropertyRef Name="TipoParty1" />
+    </Key>
+    <Property Name="TipoParty1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Party" Relationship="Self.FK_Party_TipoParty" FromRole="TipoParty" ToRole="Party" />
+  </EntityType>
+  <EntityType Name="View_users">
+    <Key>
+      <PropertyRef Name="Descripcion" />
+      <PropertyRef Name="CorreoElectronico" />
+      <PropertyRef Name="PrimerNombre" />
+    </Key>
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CorreoElectronico" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Orden_EstadoOrden">
+    <End Role="EstadoOrden" Type="Self.EstadoOrden" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoOrden">
+        <PropertyRef Name="EstadoId" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="EstadoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaOrden_Orden">
+    <End Role="Orden" Type="Self.Orden" Multiplicity="1" />
+    <End Role="LineaOrden" Type="Self.LineaOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orden">
+        <PropertyRef Name="OrdenID" />
+      </Principal>
+      <Dependent Role="LineaOrden">
+        <PropertyRef Name="OrdenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineaOrden_Plato">
+    <End Role="Plato" Type="Self.Plato" Multiplicity="1" />
+    <End Role="LineaOrden" Type="Self.LineaOrden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Plato">
+        <PropertyRef Name="PlatoID" />
+      </Principal>
+      <Dependent Role="LineaOrden">
+        <PropertyRef Name="PlatoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Orden_Party">
+    <End Role="Party" Type="Self.Party" Multiplicity="1" />
+    <End Role="Orden" Type="Self.Orden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Party">
+        <PropertyRef Name="CorreoElectronico" />
+      </Principal>
+      <Dependent Role="Orden">
+        <PropertyRef Name="CorreoElectronicoCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Party_TipoParty">
+    <End Role="TipoParty" Type="Self.TipoParty" Multiplicity="1" />
+    <End Role="Party" Type="Self.Party" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoParty">
+        <PropertyRef Name="TipoParty1" />
+      </Principal>
+      <Dependent Role="Party">
+        <PropertyRef Name="TipoParty" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDRestauranteProyectoLenguajesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EstadoOrden" EntityType="Self.EstadoOrden" />
+    <EntitySet Name="LineaOrden" EntityType="Self.LineaOrden" />
+    <EntitySet Name="Orden" EntityType="Self.Orden" />
+    <EntitySet Name="Party" EntityType="Self.Party" />
+    <EntitySet Name="Plato" EntityType="Self.Plato" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TipoParty" EntityType="Self.TipoParty" />
+    <EntitySet Name="View_users" EntityType="Self.View_users" />
+    <AssociationSet Name="FK_Orden_EstadoOrden" Association="Self.FK_Orden_EstadoOrden">
+      <End Role="EstadoOrden" EntitySet="EstadoOrden" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaOrden_Orden" Association="Self.FK_LineaOrden_Orden">
+      <End Role="Orden" EntitySet="Orden" />
+      <End Role="LineaOrden" EntitySet="LineaOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineaOrden_Plato" Association="Self.FK_LineaOrden_Plato">
+      <End Role="Plato" EntitySet="Plato" />
+      <End Role="LineaOrden" EntitySet="LineaOrden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Orden_Party" Association="Self.FK_Orden_Party">
+      <End Role="Party" EntitySet="Party" />
+      <End Role="Orden" EntitySet="Orden" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Party_TipoParty" Association="Self.FK_Party_TipoParty">
+      <End Role="TipoParty" EntitySet="TipoParty" />
+      <End Role="Party" EntitySet="Party" />
+    </AssociationSet>
+    <FunctionImport Name="PROC_AGREGAR_ORDEN">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="total" Mode="In" Type="Decimal" />
+      <Parameter Name="ordenID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_ALL_ORDERS" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_ALL_ORDERS_Result)">
+      <Parameter Name="N" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_BUSCAR_NOMBRE_PLATO" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_BUSCAR_NOMBRE_PLATO_Result)">
+      <Parameter Name="NombreBuscar" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_CHANGE_STATE">
+      <Parameter Name="ordenID" Mode="In" Type="Int32" />
+      <Parameter Name="estadoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_DATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_DATE_Result)">
+      <Parameter Name="firstDate" Mode="In" Type="DateTime" />
+      <Parameter Name="secondDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_DATE_STATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_DATE_STATE_Result)">
+      <Parameter Name="firstDate" Mode="In" Type="DateTime" />
+      <Parameter Name="secondDate" Mode="In" Type="DateTime" />
+      <Parameter Name="state" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_EMAIL" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_EMAIL_DATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_DATE_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="firstDate" Mode="In" Type="DateTime" />
+      <Parameter Name="secondDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_EMAIL_DATE_STATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_DATE_STATE_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="firstDate" Mode="In" Type="DateTime" />
+      <Parameter Name="secondDate" Mode="In" Type="DateTime" />
+      <Parameter Name="estateID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_EMAIL_STATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_STATE_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="estateID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_FILTER_ORDERS_BY_STATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_STATE_Result)">
+      <Parameter Name="estateID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_GET_PLATE" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_GET_PLATE_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="price" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_KITCHEN_ORDERS" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.PROC_KITCHEN_ORDERS_Result)">
+      <Parameter Name="N" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_MODIFICAR_PLATO">
+      <Parameter Name="platoID" Mode="In" Type="Int32" />
+      <Parameter Name="nombre" Mode="In" Type="String" />
+      <Parameter Name="descripcion" Mode="In" Type="String" />
+      <Parameter Name="precio" Mode="In" Type="Decimal" />
+      <Parameter Name="fotografia" Mode="In" Type="Binary" />
+      <Parameter Name="habilitado" Mode="In" Type="String" />
+      <Parameter Name="tiempoPreparacion" Mode="In" Type="Byte" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_RELACION_PLATO_ORDEN">
+      <Parameter Name="IDPlato" Mode="In" Type="Int32" />
+      <Parameter Name="Contador" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_search_user" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.proc_search_user_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_SET_TIMES_TO_ORDERS">
+      <Parameter Name="orderID" Mode="In" Type="Int32" />
+      <Parameter Name="dateTimeNow" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(BDRestauranteProyectoLenguajesModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="PROC_ALL_ORDERS_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_BUSCAR_NOMBRE_PLATO_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="PlatoID" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Byte" Name="TiempoPreparacionMinutos" Nullable="false" />
+    <Property Type="Binary" Name="Fotografia" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="HabilitadoSN" Nullable="false" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_DATE_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_DATE_STATE_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_EMAIL_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_EMAIL_DATE_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_EMAIL_DATE_STATE_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_EMAIL_STATE_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_FILTER_ORDERS_BY_STATE_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="PROC_GET_PLATE_Result">
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="19" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Binary" Name="Fotografia" Nullable="true" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="PROC_KITCHEN_ORDERS_Result">
+    <Property Type="Int32" Name="Numero_de_orden" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="Estado" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio_Unitario" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="proc_search_user_Result">
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CorreoElectronico" Nullable="false" MaxLength="150" />
+    <Property Type="String" Name="PrimerNombre" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SegundoNombre" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PrimerApellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

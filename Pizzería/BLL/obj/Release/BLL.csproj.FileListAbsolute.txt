@@ -1,0 +1,14 @@
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\BLL.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\BLL.pdb
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\ADL.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\Entities.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\EntityFramework.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\ADL.pdb
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\ADL.dll.config
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\Entities.pdb
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\bin\Release\EntityFramework.xml
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\obj\Release\BLL.csprojAssemblyReference.cache
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\obj\Release\BLL.csproj.CoreCompileInputs.cache
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\obj\Release\BLL.csproj.CopyComplete
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\obj\Release\BLL.dll
+C:\Users\a\Documents\Ingenieria\Pizzería\BLL\obj\Release\BLL.pdb

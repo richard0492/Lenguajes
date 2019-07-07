@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BDRestauranteProyectoLenguajesModelStoreContainer" CdmEntityContainer="BDRestauranteProyectoLenguajesEntities">
+    <EntitySetMapping Name="EstadoOrden">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.EstadoOrden">
+        <MappingFragment StoreEntitySet="EstadoOrden">
+          <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LineaOrden">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.LineaOrden">
+        <MappingFragment StoreEntitySet="LineaOrden">
+          <ScalarProperty Name="LineaOrdenID" ColumnName="LineaOrdenID" />
+          <ScalarProperty Name="OrdenID" ColumnName="OrdenID" />
+          <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orden">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.Orden">
+        <MappingFragment StoreEntitySet="Orden">
+          <ScalarProperty Name="OrdenID" ColumnName="OrdenID" />
+          <ScalarProperty Name="CorreoElectronicoCliente" ColumnName="CorreoElectronicoCliente" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="EstadoID" ColumnName="EstadoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Party">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.Party">
+        <MappingFragment StoreEntitySet="Party">
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="TipoParty" ColumnName="TipoParty" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Habilitado_S_N_" ColumnName="Habilitado[S/N]" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plato">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.Plato">
+        <MappingFragment StoreEntitySet="Plato">
+          <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+          <ScalarProperty Name="TiempoPreparacionMinutos" ColumnName="TiempoPreparacionMinutos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoParty">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.TipoParty">
+        <MappingFragment StoreEntitySet="TipoParty">
+          <ScalarProperty Name="TipoParty1" ColumnName="TipoParty" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="View_users">
+      <EntityTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.View_users">
+        <MappingFragment StoreEntitySet="View_users">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PROC_AGREGAR_ORDEN" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_AGREGAR_ORDEN" />
+    <FunctionImportMapping FunctionImportName="PROC_ALL_ORDERS" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_ALL_ORDERS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_ALL_ORDERS_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_BUSCAR_NOMBRE_PLATO" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_BUSCAR_NOMBRE_PLATO">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_BUSCAR_NOMBRE_PLATO_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="PlatoID" ColumnName="PlatoID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="TiempoPreparacionMinutos" ColumnName="TiempoPreparacionMinutos" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+          <ScalarProperty Name="HabilitadoSN" ColumnName="HabilitadoSN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_CHANGE_STATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_CHANGE_STATE" />
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_DATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_DATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_DATE_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_DATE_STATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_DATE_STATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_DATE_STATE_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_EMAIL" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_EMAIL">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_EMAIL_DATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_EMAIL_DATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_DATE_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_EMAIL_DATE_STATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_EMAIL_DATE_STATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_DATE_STATE_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_EMAIL_STATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_EMAIL_STATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_EMAIL_STATE_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_FILTER_ORDERS_BY_STATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_FILTER_ORDERS_BY_STATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_FILTER_ORDERS_BY_STATE_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_GET_PLATE" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_GET_PLATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_GET_PLATE_Result">
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Fotografia" ColumnName="Fotografia" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_KITCHEN_ORDERS" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_KITCHEN_ORDERS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.PROC_KITCHEN_ORDERS_Result">
+          <ScalarProperty Name="Numero_de_orden" ColumnName="Numero de orden" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio_Unitario" ColumnName="Precio Unitario" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_MODIFICAR_PLATO" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_MODIFICAR_PLATO" />
+    <FunctionImportMapping FunctionImportName="PROC_RELACION_PLATO_ORDEN" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_RELACION_PLATO_ORDEN" />
+    <FunctionImportMapping FunctionImportName="proc_search_user" FunctionName="BDRestauranteProyectoLenguajesModel.Store.proc_search_user">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.proc_search_user_Result">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PROC_SET_TIMES_TO_ORDERS" FunctionName="BDRestauranteProyectoLenguajesModel.Store.PROC_SET_TIMES_TO_ORDERS" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="BDRestauranteProyectoLenguajesModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="BDRestauranteProyectoLenguajesModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

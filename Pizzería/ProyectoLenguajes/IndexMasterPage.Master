@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="IndexMasterPage.master.cs" Inherits="ProyectoLenguajes.IndexMasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        <asp:ContentPlaceHolder ID="contentTittle" runat="server">
+        </asp:ContentPlaceHolder>
+    </title>
+    <asp:ContentPlaceHolder ID="contentHead" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Styles/menu.css" rel="stylesheet" />
+    <link href="Styles/footer.css" rel="stylesheet" />
+    <link href="Styles/login.css" rel="stylesheet" />
+    <script src="JavaScript/FuntionsBasic.js"></script>
+    <link href="Styles/CRUD.css" rel="stylesheet" />
+    <link href="Styles/orders.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.4.1.js"></script>
+    <link href="Content/toastr.css" rel="stylesheet" />
+    <script src="Scripts/toastr.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <a class="logo">
+                <img src="Images/logo.png">
+            </a>
+
+
+        </header>
+
+        <asp:ContentPlaceHolder ID="contentBody" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
