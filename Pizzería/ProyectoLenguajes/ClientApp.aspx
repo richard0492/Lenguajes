@@ -18,9 +18,8 @@
     <div id="register">
         <div class="container">
             <div class="btn-group btn-group-justified">
-                <asp:LinkButton ID="orders" class="btn btn-lg btn-danger" runat="server" OnClick="orders_Click">LinkButton</asp:LinkButton>
-                <a href="ClientOrder.aspx" class="btn btn-lg btn-danger">Orden</a>
-                <a href="ClientInformation.aspx" class="btn btn-lg btn-danger">Informacion del Cliente</a>
+                <asp:LinkButton ID="orders" class="btn btn-lg btn-danger" runat="server" OnClick="orders_Click">Ordenes</asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" class="btn btn-lg btn-danger" runat="server" OnClick="LinkButton1_Click">Modificar datos</asp:LinkButton>
             </div>
         </div>
 
@@ -68,7 +67,7 @@
       </div>
                     </div>
                     <div class="modal-footer">
-                        <asp:Button ID="ButtonAddOrder" class="btn btn-success"  runat="server" Text="Agregar a la Orden" OnClick="ButtonAddOrder_Click" />
+<asp:LinkButton ID="ButtonAddOrder" class="btn btn-success"  runat="server" OnClick="ButtonAddOrder_Click">Agregar a la Orden</asp:LinkButton>
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
@@ -92,7 +91,7 @@
         <asp:Label ID="Label2" runat="server" Text=""></asp:Label>
                     <br/><br/>
                           <div class="table-responsive">
-        <asp:GridView ID="GridView2" runat="server" class="table table-dark table-hover"  OnRowCommand="GridView1_RowCommand" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Horizontal"  >
+        <asp:GridView ID="GridView2" runat="server" class="table table-dark table-hover"  OnRowCommand="GridView2_RowCommand" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" GridLines="Horizontal"  >
             <Columns>
                 <asp:ButtonField ButtonType="Button"  ControlStyle-CssClass=" btn btn-danger" CommandName="ButtonDelete" Text="Eliminar" />
             </Columns>
@@ -109,8 +108,59 @@
                     </div>
                     <div class="modal-footer">
 
-                                <asp:Button ID="ButtonOrder"  class="btn btn-warning btn-block" runat="server" Visible="false" Text="Confirmar Pedido" OnClick="ButtonOrder_Click" />
+                                <asp:Button ID="ButtonOrder"  class="btn btn-warning" runat="server" Text="Confirmar Pedido" OnClick="ButtonOrder_Click" />
 
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </center>
+
+        <center>
+         <div class="modal fade" id="exampleModalU" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-md" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongU" style="text-align: center">Carrito de Ordenes</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+        <label for="exampleInputEmail">Primer Nombre</label>
+        <asp:TextBox ID="TextBoxfirstName"  class="form-control" runat="server" ></asp:TextBox>
+      </div>
+    
+      <div class="form-group">
+        <label for="exampleInputEmail">Segundo Nombre</label>
+        <asp:TextBox ID="TextBoxlastName" class="form-control" runat="server" ></asp:TextBox>
+      </div>
+
+         <div class="form-group">
+        <label for="exampleInputEmail">Primer Apellido</label>
+        <asp:TextBox ID="TextBoxApellido1"  class="form-control" runat="server" ></asp:TextBox>
+      </div>
+
+           <div class="form-group">
+        <label for="exampleInputEmail">Segundo Apellido</label>
+        <asp:TextBox ID="TextBoxApellido2"  class="form-control" runat="server" ></asp:TextBox>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputEmail">Direccion</label>
+        <asp:TextBox ID="TextBoxAddress"   class="form-control" runat="server"></asp:TextBox>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleInputPassword">Contraseña</label>
+        <asp:TextBox ID="TextBoxPassword"   class="form-control" runat="server"></asp:TextBox>
+      </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <asp:Button ID="bntModify"  class="btn btn-warning btn-block" runat="server" Text="Modificar" OnClick="Button1_Click"/>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>

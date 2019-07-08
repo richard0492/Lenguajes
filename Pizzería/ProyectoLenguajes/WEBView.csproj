@@ -87,10 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminMenu.aspx" />
-    <Content Include="ChangeStatusOrder.aspx" />
     <Content Include="ClientApp.aspx" />
-    <Content Include="ClientInformation.aspx" />
-    <Content Include="ClientOrder.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -105,19 +102,8 @@
     <Content Include="Details.aspx" />
     <Content Include="GlobalVar.asax" />
     <Content Include="Images\16156.png" />
-    <Content Include="Images\fondo 1.png" />
-    <Content Include="Images\login background blur.jpg" />
-    <Content Include="Images\logo.png" />
-    <Content Include="Images\pizza0.jpg" />
-    <Content Include="Images\pizza1.JPG" />
-    <Content Include="Images\pizza7.jpg" />
-    <Content Include="Images\pizzaClient.jpg" />
-    <Content Include="Images\pizzaClient2.jpg" />
-    <Content Include="Images\pizzaClient3.jpg" />
     <Content Include="Images\plate-1486363_960_720.jpg" />
-    <Content Include="Images\restaurant-895427_960_720.png" />
     <Content Include="JavaScript\FuntionsBasic.js" />
-    <Content Include="KitchenConfirm.aspx" />
     <Content Include="KitchenMenu.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -177,33 +163,12 @@
     <Compile Include="AdminMenu.aspx.designer.cs">
       <DependentUpon>AdminMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ChangeStatusOrder.aspx.cs">
-      <DependentUpon>ChangeStatusOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ChangeStatusOrder.aspx.designer.cs">
-      <DependentUpon>ChangeStatusOrder.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ClientApp.aspx.cs">
       <DependentUpon>ClientApp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ClientApp.aspx.designer.cs">
       <DependentUpon>ClientApp.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ClientInformation.aspx.cs">
-      <DependentUpon>ClientInformation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ClientInformation.aspx.designer.cs">
-      <DependentUpon>ClientInformation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ClientOrder.aspx.cs">
-      <DependentUpon>ClientOrder.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ClientOrder.aspx.designer.cs">
-      <DependentUpon>ClientOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="CRUDOrders.aspx.cs">
       <DependentUpon>CRUDOrders.aspx</DependentUpon>
@@ -243,13 +208,6 @@
     </Compile>
     <Compile Include="IndexMasterPage.Master.designer.cs">
       <DependentUpon>IndexMasterPage.Master</DependentUpon>
-    </Compile>
-    <Compile Include="KitchenConfirm.aspx.cs">
-      <DependentUpon>KitchenConfirm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="KitchenConfirm.aspx.designer.cs">
-      <DependentUpon>KitchenConfirm.aspx</DependentUpon>
     </Compile>
     <Compile Include="KitchenMenu.aspx.cs">
       <DependentUpon>KitchenMenu.aspx</DependentUpon>

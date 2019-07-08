@@ -707,6 +707,11 @@ namespace BLL
             accessData.deliverOrder(orderID);
         }
 
+        public void returnLastOrder(int orderID, int state)
+        {
+            accessData.returnLastOrder(orderID, state);
+        }
+
         public Orden findOrder(int orderID)
         {
             return accessData.findOrder(orderID);

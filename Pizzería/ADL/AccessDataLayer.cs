@@ -34,7 +34,7 @@ namespace ADL
             return true;
         }
 
-        public Plato Get_Plate_Client(string name, int price ) {
+        public Plato Get_Plate_Client(string name, int price) {
             var query = from party in database.Plato
                         where party.Nombre == name && party.Precio == price
                         select party;
@@ -55,7 +55,7 @@ namespace ADL
 
         public List<Plato> ShowPlates()
         {
-           return database.Plato.ToList(); 
+            return database.Plato.ToList();
         }
 
         public Boolean DeletePlate(Plato plate)
@@ -71,7 +71,7 @@ namespace ADL
             database.PROC_RELACION_PLATO_ORDEN(id, Output);
             int relation = (int)Output.Value;
 
-            
+
 
 
             if (relation == 0)
@@ -481,7 +481,15 @@ namespace ADL
         {
             using (BDRestauranteProyectoLenguajesEntities db = new BDRestauranteProyectoLenguajesEntities())
             {
-                db.PROC_CHANGE_STATE(orderID, 4);
+                db.PROC_CHANGE_STATE(orderID, 5);
+            }
+        }
+
+        public void returnLastOrder(int orderID, int state)
+        {
+            using (BDRestauranteProyectoLenguajesEntities db = new BDRestauranteProyectoLenguajesEntities())
+            {
+                db.PROC_CHANGE_STATE(orderID, state);
             }
         }
 

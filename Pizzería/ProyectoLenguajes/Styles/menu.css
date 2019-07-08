@@ -9,6 +9,20 @@
     background-attachment: fixed;
 }
 
+.modal-header {
+    background-color: cornflowerblue;
+    font-family: Cooper;
+    border-radius: 6px;
+}
+
+.modal-content {
+    border-radius: 25px;    
+}
+
+.modal-body {
+    font-family: Cooper;
+    background-color: rgba(37, 165, 154, 0.685);
+}
 
 #register {
     height: auto;

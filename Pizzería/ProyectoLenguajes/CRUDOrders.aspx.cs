@@ -14,6 +14,8 @@ namespace ProyectoLenguajes
         DateTime defaultDate = DateTime.Parse("1 / 1 / 0001 00:00:00");
         DateTime startDate = DateTime.Parse("1 / 1 / 0001 00:00:00");
         DateTime endDate = DateTime.Parse("1 / 1 / 0001 00:00:00");
+        static string id;
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -140,8 +142,9 @@ namespace ProyectoLenguajes
             {
                 int crow;
                 crow = Convert.ToInt32(e.CommandArgument.ToString());
-                string id = GridViewResult.Rows[crow].Cells[1].Text;
-                Response.Redirect("ChangeStatusOrder.aspx?id=" + id);
+                id = GridViewResult.Rows[crow].Cells[1].Text;
+                ClientScript.RegisterStartupScript(this.GetType(), "key", "showModalChange()", true);
+
             }
             else
             {
@@ -157,6 +160,13 @@ namespace ProyectoLenguajes
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             ClientScript.RegisterStartupScript(this.GetType(), "key", "showModal()", true);
+        }
+
+        protected void ButtonFilters_Click(object sender, EventArgs e)
+        {
+            int state = int.Parse(DropDownList1.SelectedValue);
+            bLLclass.changeStateOrder(int.Parse(id), state);
+            Response.Redirect("CRUDOrders.aspx");
         }
     }
 }

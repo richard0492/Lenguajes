@@ -78,6 +78,36 @@
             </div>
         </div>
             </center>
+
+        <center>
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModal" style="text-align: center">Cambiar Estado</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <asp:DropDownList ID="DropDownList1" runat="server" Height="26px">
+            <asp:ListItem Value="0"> - </asp:ListItem>
+            <asp:ListItem Value="1">A tiempo </asp:ListItem>
+            <asp:ListItem Value="2">Sobre tiempo</asp:ListItem>
+            <asp:ListItem Value="3">Atrasado</asp:ListItem>
+            <asp:ListItem Value="4">Anulado</asp:ListItem>
+            <asp:ListItem Value="5">Entregado</asp:ListItem>
+        </asp:DropDownList>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="ButtonUpdtState" ControlStyle-CssClass="btn btn-success" runat="server" Text="Actualizar estado" OnClick="ButtonFilters_Click" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </center>
+
         <div class="table-responsive">
             <asp:GridView ID="GridViewResult" class="table table-dark" runat="server" OnRowCommand="GridView1_RowCommand" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">
                 <AlternatingRowStyle BackColor="#F7F7F7" />

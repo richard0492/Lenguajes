@@ -12,6 +12,7 @@ namespace ProyectoLenguajes
     public partial class KitchenMenu : System.Web.UI.Page
     {
         BussinessLogicLayer bllClass = new BussinessLogicLayer();
+        static string id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -63,6 +64,15 @@ namespace ProyectoLenguajes
                 {
                     GridViewResult.Rows[i].BackColor = System.Drawing.Color.Red;
                 }
+                if (i == 7)
+                {
+                    lbOrdesInQueue.Visible = true;
+                }
+                else
+                {
+                    lbOrdesInQueue.Visible = false;
+                }
+
             }
         }
 
@@ -129,10 +139,48 @@ namespace ProyectoLenguajes
                 /*Button Update*/
                 int crow;
                 crow = Convert.ToInt32(e.CommandArgument.ToString());
-                string id = GridViewResult.Rows[crow].Cells[1].Text;
-                Response.Redirect("KitchenConfirm.aspx?id=" + id);
+                id = GridViewResult.Rows[crow].Cells[1].Text;
+                Session["LastOrderDelivered"] = id;
+                Session["ActualState"] = GridViewResult.Rows[crow].Cells[3].Text;
+                ScriptManager.RegisterClientScriptBlock(this,this.GetType(), "key", "showModal()", true);
             }
 
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            bllClass.deliverOrder(int.Parse(id));
+            Response.Redirect("KitchenMenu.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("KitchenMenu.aspx");
+        }
+
+        protected void btnReturnOrder_Click(object sender, EventArgs e)
+        {
+            if (Session["LastOrderDelivered"] != null && Session["ActualState"] != null)
+            {
+                int idReturn = Convert.ToInt32(Session["LastOrderDelivered"]);
+                if (Session["ActualState"].Equals("A tiempo"))
+                {
+
+                    bllClass.returnLastOrder(idReturn, 1);
+                }
+                if (Session["ActualState"].Equals("Sobre tiempo"))
+                {
+                    bllClass.returnLastOrder(idReturn, 2);
+                }
+                if (Session["ActualState"].Equals("Atrasado"))
+                {
+                    bllClass.returnLastOrder(idReturn, 3);
+                }
+
+                Response.Redirect("KitchenMenu.aspx");
+            }
+            else {
+                alert("No se han entregado órdenes");
+            }
         }
     }
 }

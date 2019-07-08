@@ -6,15 +6,35 @@ function show(id) {
     document.getElementById(id).style.display = 'block';
 }
 
+
+
+function showModalState() {
+    $(document).ready(function () {
+        $("#exampleModalState").modal({ backdrop: 'static', keyboard: false });
+    });
+}
 function showModal() {
     $(document).ready(function () {
         $("#exampleModalCenter").modal({backdrop: 'static', keyboard: false});
     });
 }
 
+function showModalChange() {
+    $(document).ready(function () {
+        $("#exampleModal").modal({ backdrop: 'static', keyboard: false });
+    });
+}
+
 function showModaOrders() {
     $(document).ready(function () {
         $("#exampleModalCenterOrder").modal({ backdrop: 'static', keyboard: false });
+    });
+}
+
+
+function showModaUpdateU() {
+    $(document).ready(function () {
+        $("#exampleModalU").modal({ backdrop: 'static', keyboard: false });
     });
 }
 

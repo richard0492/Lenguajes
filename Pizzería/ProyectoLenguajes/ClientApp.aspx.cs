@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,10 +13,10 @@ namespace ProyectoLenguajes
 {
     public partial class ClientApp : System.Web.UI.Page
     {
-        string idPlateToOrder = "";
+        static string idPlateToOrder = "";
         string quantity = "";
         private BussinessLogicLayer bll = new BussinessLogicLayer();
-        List<LineaOrden> orderLines;
+        static List<LineaOrden> orderLines = new List<LineaOrden>();
         string[] splitName;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -28,13 +29,9 @@ namespace ProyectoLenguajes
                     string name = Session["client"].ToString();
                     splitName = name.Split('/');
                     namelb.Text = splitName[0];
-                    if (IsPostBack)
-                    {
+                   
                         load();
-                    }
-                    else {
-                        load();
-                    }
+                   
                 }
                 else
                 {
@@ -57,8 +54,7 @@ namespace ProyectoLenguajes
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (!IsPostBack)
-            {
+            
                 if (e.CommandName == "detail")
                 {
                     /*Button Update*/
@@ -71,38 +67,24 @@ namespace ProyectoLenguajes
 
 
                 }
-            }
-            else
-            {
-                if (e.CommandName == "detail")
-                {
-                    /*Button Update*/
-                    int crow;
-                    crow = Convert.ToInt32(e.CommandArgument.ToString());
-                    string id = GridView1.Rows[crow].Cells[2].Text;
-                    string name = GridView1.Rows[crow].Cells[1].Text;
-                    loadInf(id, name);
-                    ClientScript.RegisterStartupScript(this.GetType(), "key", "showModal()", true);
-
-
-                }
-            }
+            
         }
 
         private void loadInf(string price, string name)
         {
-            //int n = Int32.Parse(price);
-            float asd = (float)Convert.ToDouble(price);
-            int price1 = Convert.ToInt32(asd);
-            List<String> list = bll.Get_Plate_ToClient(name, price1);
-            TextBoxName.Text = list[0];
-            TextBoxPrice.Text = list[1];
-            TextBoxFullDescription.Text = list[2];
-            this.idPlateToOrder = list[3]; //ID del Plato a agregar a la lista de Ordenes 
-            if (list.Count > 4)
-            {
-                Image1.ImageUrl = String.Format(@"data:image/jpg;base64,{0}", list[4]);
-            }
+            List<String> list = new List<string>();
+                float asd = (float)Convert.ToDouble(price);
+                int price1 = Convert.ToInt32(asd);
+                list = bll.Get_Plate_ToClient(name, price1);
+                TextBoxName.Text = list[0];
+                TextBoxPrice.Text = list[1];
+                TextBoxFullDescription.Text = list[2];
+                idPlateToOrder = list[3]; //ID del Plato a agregar a la lista de Ordenes 
+                if (list.Count > 4)
+                {
+                    Image1.ImageUrl = String.Format(@"data:image/jpg;base64,{0}", list[4]);
+                }
+            
         }
         private void getQuantity()
         {
@@ -134,10 +116,20 @@ namespace ProyectoLenguajes
 
         private void alert(String message)
         {
-            string script = @"<script type='text/javascript'>
-                            alert(' " + message + "'); </script>";
-            script = string.Format(script);
-            ScriptManager.RegisterStartupScript(this, typeof(Page), "alerta", script, false);
+            StringBuilder sbMensaje = new StringBuilder();
+            sbMensaje.Append("<script type='text/javascript'>");
+            sbMensaje.AppendFormat("toastr.warning('" + message + "');");
+            sbMensaje.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "mensaje", sbMensaje.ToString());
+        }
+
+        private void alertConfirm(String message)
+        {
+            StringBuilder sbMensaje = new StringBuilder();
+            sbMensaje.Append("<script type='text/javascript'>");
+            sbMensaje.AppendFormat("toastr.success('" + message + "');");
+            sbMensaje.Append("</script>");
+            ClientScript.RegisterClientScriptBlock(this.GetType(), "mensaje", sbMensaje.ToString());
         }
 
         private void clearGrid()
@@ -149,9 +141,7 @@ namespace ProyectoLenguajes
         }
         private void loadOrders()
         {
-            List<LineaOrden> dt = (List<LineaOrden>)Session["List"];
-
-            //_Plato p = bll.SearchPlatoID(dt[2].PlatoID.ToString());
+            List<LineaOrden> dt = orderLines;
 
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Codigo de Plato");
@@ -187,9 +177,8 @@ namespace ProyectoLenguajes
             {
                 Label1.Visible = false;
                 Label2.Visible = false;
-                ButtonOrder.Visible = false;
             }
-            Session["List"] = dt;
+            orderLines = dt;
 
 
 
@@ -197,11 +186,23 @@ namespace ProyectoLenguajes
             GridView2.DataBind();
 
         }
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "ButtonDelete")
+            {
 
+                int crow;
+                crow = Convert.ToInt32(e.CommandArgument.ToString());
+                string id = GridView2.Rows[crow].Cells[1].Text;
+
+                bll.DeleteLine(orderLines, id);
+                loadOrders();
+                ClientScript.RegisterStartupScript(this.GetType(), "key", "showModaOrders()", true);
+            }
+        }
         protected void ButtonAddOrder_Click(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
+          
                 getQuantity();
                 if (!quantity.Trim().Equals("") && Int32.Parse(quantity) > 0 && Int32.Parse(quantity) < 101)
                 {
@@ -209,45 +210,72 @@ namespace ProyectoLenguajes
 
                     bll.AddOrderLine(idPlateToOrder, quantity, orderLines);
 
-                    alert("Se agrego el plato a la orden con exito");
-                }
+                alertConfirm("Se agrego el plato a la orden con exito");
+                TextBoxName.Text = "";
+                TextBoxPrice.Text = "";
+                TextBoxFullDescription.Text = "";
+                idPlateToOrder = "";
+                Image1.ImageUrl = null;
+
+
+            }
                 else
                 {
                     alert("Debe ingresar un numero mayor a 0 y menor a 100. SI desea comprar mas de 100 contactar con los dueños");
                 }
-            }
-            else {
-                getQuantity();
-                if (!quantity.Trim().Equals("") && Int32.Parse(quantity) > 0 && Int32.Parse(quantity) < 101)
-                {
-                    idPlateToOrder.ToString();
-
-                    bll.AddOrderLine(idPlateToOrder, quantity, orderLines);
-
-                    alert("Se agrego el plato a la orden con exito");
-                }
-                else
-                {
-                    alert("Debe ingresar un numero mayor a 0 y menor a 100. SI desea comprar mas de 100 contactar con los dueños");
-                }
-            }
+            
             
            
         }
 
         protected void ButtonOrder_Click(object sender, EventArgs e)
         {
-            //alert(Session["List"].ToString());
-            bll.CreateOrder((List<LineaOrden>)Session["List"], Session["UserEmail"].ToString() + "");
-            Session["List"] = null;
-            //Response.Redirect("ClientOrder.aspx");
+            splitName[1].ToString();
+            bll.CreateOrder(orderLines, splitName[1].ToString().Trim());
+            orderLines = null;
             load();
-            alert("Total de la factura es de: " + Label2.Text);
+            alertConfirm("Total de la factura es de: " + Label2.Text);
         }
 
         protected void orders_Click(object sender, EventArgs e)
         {
+            loadOrders();
             ClientScript.RegisterStartupScript(this.GetType(), "key", "showModaOrders()", true);
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            loadTextBox();
+            ClientScript.RegisterStartupScript(this.GetType(), "key", "showModaUpdateU()", true);
+        }
+
+        private void loadTextBox()
+        {
+            List<string> list = bll.searchPartyClientByEmail(splitName[1].ToString().Trim());
+
+            TextBoxfirstName.Text = list[0].ToString();
+            TextBoxlastName.Text = list[1].ToString();
+            TextBoxApellido1.Text = list[2].ToString();
+            TextBoxApellido2.Text = list[3].ToString();
+            TextBoxAddress.Text = list[4].ToString();
+            TextBoxPassword.Text = list[5].ToString();
+        }
+
+        private void getDataToModify()
+        {
+            String fname = TextBoxfirstName.Text;
+            String sname = TextBoxlastName.Text;
+            String fLastName = TextBoxApellido1.Text;
+            String sLastName = TextBoxApellido2.Text;
+            String address = TextBoxAddress.Text;
+            String password = TextBoxPassword.Text;
+
+            bll.updateClientInformation(splitName[1].ToString().Trim(), fname, sname, fLastName, sLastName, address, password);
+            alert("La informacion se modifico con exito");
+        }
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            getDataToModify();
         }
     }
 }
